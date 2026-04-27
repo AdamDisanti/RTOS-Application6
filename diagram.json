@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "author": "AdamD",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -23.51, "left": -5.03, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "ledGreen",
+      "top": 169.2,
+      "left": 128.6,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledRed",
+      "top": 178.8,
+      "left": 195.8,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-slide-potentiometer", "id": "pot", "top": -81.4, "left": 123.8, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "button",
+      "top": 44.6,
+      "left": -124.8,
+      "attrs": { "color": "red", "bounce": "1", "xray": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 254.4,
+      "left": 124.25,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 254.4,
+      "left": 191.45,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-logic-analyzer", "id": "logic1", "top": 105.95, "left": 268.8, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "text1",
+      "top": -38.4,
+      "left": 316.8,
+      "attrs": {
+        "text": "D0 = Pilot Override Input (GPIO18)\nD1 = Heartbeat LED (GPIO2)\nD2 = Hazard Indicator LED (GPIO4)\nD3 = ISR Strobe (GPIO21)\nD4 = Hard Response Task Strobe (GPIO22)\nD5 = Variable Load Task Strobe (GPIO23)\n"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text2",
+      "top": 0,
+      "left": -172.8,
+      "attrs": { "text": "Pilot Override \n(Shielded Mode)\n" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text3",
+      "top": 192,
+      "left": 0,
+      "attrs": { "text": "System Heartbeat\n" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text5",
+      "top": -67.2,
+      "left": 201.6,
+      "attrs": { "text": "Hazard Input\n" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text6",
+      "top": -96,
+      "left": -144,
+      "attrs": { "text": "ESP32 Flight Monitor Controller\n" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text7",
+      "top": 201.6,
+      "left": 288,
+      "attrs": { "text": "Deadline Verification Logic Analyzer" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text4",
+      "top": 220.8,
+      "left": 172.8,
+      "attrs": { "text": "Hazard Alert" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot:VCC", "esp:3V3", "red", [ "h-9.6", "v-28.8", "h-144", "v62.89" ] ],
+    [ "esp:34", "pot:SIG", "green", [ "h-18.78", "v-82.09", "h134.4", "v87.2" ] ],
+    [ "pot:GND", "esp:GND.2", "black", [ "v-48", "h-273.47" ] ],
+    [ "esp:GND.1", "ledGreen:C", "black", [ "h-28.38", "v90.71", "h172.4" ] ],
+    [
+      "ledRed:C",
+      "esp:GND.1",
+      "black",
+      [ "v0", "h-38", "v-48", "h-48", "v38.4", "h-144", "v-76.8" ]
+    ],
+    [ "ledGreen:A", "r1:1", "green", [ "v0" ] ],
+    [ "ledRed:A", "r2:1", "green", [ "v0" ] ],
+    [ "r1:2", "esp:2", "green", [ "h-38.4", "v-1.2" ] ],
+    [ "r2:2", "esp:4", "green", [ "v8.4", "h-86.4", "v-177.11" ] ],
+    [ "esp:18", "button:1.r", "green", [ "v-24.49", "h-153.53" ] ],
+    [ "button:2.r", "esp:GND.3", "black", [ "h19.4", "v-9.8", "h134.13" ] ],
+    [ "logic1:GND", "esp:GND.3", "black", [ "h-38.4", "v-129.11" ] ],
+    [ "logic1:D0", "esp:18", "purple", [ "h-134.4", "v-33.11" ] ],
+    [ "logic1:D1", "esp:4", "purple", [ "h0" ] ],
+    [ "logic1:D2", "esp:2", "purple", [ "h-173.07" ] ],
+    [ "logic1:D3", "esp:21", "purple", [ "h-28.8", "v-96", "h-124.8", "v5.29" ] ],
+    [ "logic1:D4", "esp:22", "purple", [ "h-19.2", "v-115.2", "h-134.4", "v-13.91" ] ],
+    [ "esp:23", "logic1:D5", "purple", [ "h29.07", "v13.91", "h134.4", "v134.4" ] ]
+  ],
+  "dependencies": {}
+}

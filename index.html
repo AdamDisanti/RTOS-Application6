@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Application 6 — Real-Time Hazard Response</title>
+  <title>Adam Disanti — Project Portfolio</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -12,6 +12,7 @@
       --text: #e8eef5;
       --muted: #9fb0c3;
       --accent: #6ee7ff;
+      --accent-2: #9b8cff;
     }
     body {
       margin: 0;
@@ -20,15 +21,15 @@
       color: var(--text);
     }
     .wrap {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 32px 20px 64px;
     }
     header {
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
     h1 {
-      font-size: 2.1rem;
+      font-size: 2.3rem;
       margin: 0 0 8px;
     }
     p {
@@ -44,6 +45,67 @@
     .meta {
       color: var(--muted);
       font-size: 0.95rem;
+    }
+    .hero {
+      display: grid;
+      gap: 16px;
+      align-items: center;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b0f14;
+    }
+    .button.secondary {
+      background: #1b2431;
+      color: var(--text);
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 12px;
+    }
+    .section-title h2 {
+      margin: 0;
+    }
+    .projects-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .project-card {
+      display: grid;
+      gap: 14px;
+      height: 100%;
+    }
+    .project-header {
+      display: grid;
+      gap: 6px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #1b2431;
+      color: var(--muted);
+      font-size: 0.8rem;
     }
     .video {
       position: relative;
@@ -61,56 +123,99 @@
     }
     a { color: var(--accent); }
     ul { margin: 8px 0 0 18px; }
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <h1>Application 6 — Real-Time Hazard Response</h1>
-      <div class="meta">RTOS COP 4775 · April 27, 2026 · Adam Disanti</div>
+    <header class="hero">
+      <div>
+        <h1>Adam Disanti — Project Portfolio</h1>
+        <div class="meta">RTOS COP 4775 · April 27, 2026</div>
+      </div>
+      <p>
+        A modular portfolio for project demos, writeups, and videos. Add new projects by duplicating
+        a card in the Projects section and updating the title, summary, tags, and video embed.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="https://adamdisanti.github.io/RTOS-Application6/" target="_blank" rel="noopener">Live Site</a>
+        <a class="button secondary" href="https://github.com/AdamDisanti" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </header>
 
     <section class="card">
-      <h2>Project Summary</h2>
-      <p>
-        This project simulates a real-time hazard response system for an aerospace/defense context.
-        A potentiometer acts as a hazard intensity input, a pushbutton acts as a pilot override,
-        a green LED indicates heartbeat, and a red LED indicates threats. The design uses an ISR,
-        multiple FreeRTOS tasks, semaphores, a queue, and a mutex to guarantee a hard deadline on
-        the override path while keeping the rest of the system responsive.
-      </p>
-    </section>
+      <div class="section-title">
+        <h2>Projects</h2>
+        <span class="meta">Add as many cards as you want</span>
+      </div>
 
-    <section class="card">
-      <h2>Demo Video</h2>
-      <p class="meta">Replace the placeholder link with your YouTube video ID.</p>
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/EOkDo1x-bsY"
-          title="Application 6 Demo"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+      <div class="projects-grid">
+        <article class="card project-card">
+          <div class="project-header">
+            <h3>Application 6 — Real-Time Hazard Response</h3>
+            <div class="meta">RTOS COP 4775 · April 27, 2026</div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">FreeRTOS</span>
+            <span class="tag">ISR</span>
+            <span class="tag">Semaphores</span>
+            <span class="tag">Queue</span>
+            <span class="tag">Real-Time</span>
+          </div>
+
+          <p>
+            This project simulates a real-time hazard response system for an aerospace/defense context.
+            A potentiometer acts as a hazard intensity input, a pushbutton acts as a pilot override for
+            the hazard event, a green LED indicates a system heartbeat, and a red LED indicates threats.
+            The design uses an ISR, multiple FreeRTOS tasks, semaphores, a queue, and a mutex to
+            guarantee a hard deadline on the override path while keeping the rest of the system responsive.
+          </p>
+
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/EOkDo1x-bsY"
+              title="Application 6 Demo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div>
+            <strong>Key Features</strong>
+            <ul>
+              <li>Hard override path with a 5000µs deadline.</li>
+              <li>Event-driven threat assessment and alarm tasks.</li>
+              <li>Shared state protected by a mutex for consistent telemetry.</li>
+              <li>Validated timing using UART logs and logic analyzer traces.</li>
+            </ul>
+          </div>
+
+          <div class="hero-actions">
+            <a class="button secondary" href="https://www.youtube.com/watch?v=EOkDo1x-bsY" target="_blank" rel="noopener">Watch on YouTube</a>
+            <a class="button secondary" href="https://github.com/AdamDisanti/RTOS-Application6" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="card">
-      <h2>Key Features</h2>
+      <div class="section-title">
+        <h2>Quick Links</h2>
+      </div>
       <ul>
-        <li>Hard override path with a 5000µs deadline.</li>
-        <li>Event-driven threat assessment and alarm tasks.</li>
-        <li>Shared state protected by a mutex for consistent telemetry.</li>
-        <li>Validated timing using UART logs and logic analyzer traces.</li>
+        <li><a href="https://github.com/AdamDisanti" target="_blank" rel="noopener">My GitHub</a></li>
+        <li><a href="https://www.youtube.com/watch?v=EOkDo1x-bsY" target="_blank" rel="noopener">Demo Video</a></li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>Links</h2>
-      <ul>
-        <li><a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></li>
-        <li><a href="https://docs.github.com/en/pages/quickstart" target="_blank" rel="noopener">GitHub Pages Quickstart</a></li>
-      </ul>
-    </section>
+    <footer>
+      Add new projects by duplicating the Application 6 card inside the Projects section.
+    </footer>
   </div>
 </body>
 </html>
